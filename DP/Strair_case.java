@@ -1,0 +1,35 @@
+package DP;
+
+import java.util.Scanner;
+
+public class Strair_case {
+
+	public static void main(String[] args) {
+		
+		try (Scanner scn = new Scanner(System.in)) {
+			int n=scn.nextInt();
+			System.out.print(stair_case(n));
+		}
+
+	}
+
+	private static long stair_case(int n) {
+		if(n<=1) {
+			return 1;
+		}
+		if(n==2) {
+			return 2;
+		}
+		long dpCount[]=new long[n+1] ;
+		dpCount[0]=1;
+		dpCount[1]=1;
+		dpCount[2]=2;
+		
+		for(int i=3;i<=n;i++) {
+			dpCount[i]=dpCount[i-1]+dpCount[i-2]+dpCount[i-3];
+		}
+	
+		return  dpCount[n];
+	}
+
+}
